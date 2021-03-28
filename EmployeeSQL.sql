@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS "departments" CASCADE;
+DROP TABLE IF EXISTS "titles" CASCADE;
+DROP TABLE IF EXISTS "employees" CASCADE;
+DROP TABLE IF EXISTS "dept_emp" CASCADE;
+DROP TABLE IF EXISTS "dept_manager" CASCADE;
+DROP TABLE IF EXISTS "salaries" CASCADE;
 
 CREATE TABLE "departments" (
 	"dept_no" VARCHAR NOT NULL PRIMARY KEY,
@@ -10,7 +16,7 @@ CREATE TABLE "titles"(
 );
 
 CREATE TABLE "employees"(
-	"emp_no" VARCHAR NOT NULL PRIMARY KEY,
+	"emp_no" INT NOT NULL PRIMARY KEY,
 	"emp_title_id" VARCHAR NOT NULL,
 	"birth_date" VARCHAR NOT NULL,
 	"first_name" VARCHAR NOT NULL,
@@ -20,18 +26,18 @@ CREATE TABLE "employees"(
 );
 
 CREATE TABLE "dept_emp"(
-	"emp_no" VARCHAR NOT NULL,
+	"emp_no" INT NOT NULL,
 	"dept_no" VARCHAR NOT NULL
 );
 
 CREATE TABLE "dept_manager"(
 	"dept_no" VARCHAR NOT NULL,
-	"emp_no" VARCHAR NOT NULL PRIMARY KEY
+	"emp_no" INT NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE "salaries" (
-	"emp_no"  VARCHAR NOT NULL PRIMARY KEY,
-	"salary" VARCHAR NOT NULL
+	"emp_no"  INT NOT NULL PRIMARY KEY,
+	"salary" INT NOT NULL
 );
 
 ALTER TABLE "dept_emp" ADD 
