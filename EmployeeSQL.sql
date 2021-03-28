@@ -1,10 +1,3 @@
-DROP TABLE departments CASCADE;
-DROP TABLE dept_emp CASCADE;
-DROP TABLE dept_manager CASCADE;
-DROP TABLE employees CASCADE;
-DROP TABLE salaries CASCADE;
-DROP TABLE titles CASCADE;
-
 
 CREATE TABLE "departments" (
 	"dept_no" VARCHAR NOT NULL PRIMARY KEY,
@@ -41,3 +34,15 @@ CREATE TABLE "salaries" (
 	"salary" VARCHAR NOT NULL
 );
 
+ALTER TABLE "dept_emp" ADD 
+	FOREIGN KEY ("dept_no") REFERENCES "departments"("dept_no");
+ALTER TABLE "dept_emp" ADD 
+	FOREIGN KEY ("emp_no") REFERENCES "employees"("emp_no");
+ALTER TABLE "dept_manager" ADD
+	FOREIGN KEY ("dept_no") REFERENCES "departments"("dept_no");
+ALTER TABLE "dept_manager" ADD
+	FOREIGN KEY ("emp_no") REFERENCES "employees"("emp_no");
+ALTER TABLE "employees" ADD
+	FOREIGN KEY ("emp_title_id") REFERENCES "titles"("title_id");
+ALTER TABLE "salaries" ADD
+	FOREIGN KEY ("emp_no") REFERENCES "employees"("emp_no");
